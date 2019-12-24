@@ -1,0 +1,147 @@
+.circle{
+    border: 1px solid black;
+    border-radius: 1000000px;
+    background-color: darkturquoise;
+    display: flex;
+    justify-content: space-between;
+    height: 400px;
+    width: 400px;
+    
+}
+.b{
+    background-color: black;
+}
+.r{
+  width: 20px;
+  height: 1px;
+  align-self: flex-end;
+    
+}
+.l{
+  width: 20px;
+  height: 1px;
+    align-self: flex-start;
+}
+.c1{
+    height: 20px;
+    width: 1px;
+}
+.c2{
+    height: 20px;
+    width: 1px; 
+}
+.c{
+    align-self: center;
+}
+.center{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between; 
+}
+.transform1{
+    transform: rotate(45deg) ;
+}
+.transform2{
+    transform: rotate(-45deg) ;
+}
+.container{
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    display: flex;
+    justify-content: space-around;
+    height: 400px;
+    width: 400px;
+}
+.g1{
+  flex-grow: 1;  
+}
+.m{
+    margin: 60px;
+}
+.rp{
+    align-self: flex-end
+}
+.sec{
+    height: 200px;
+    width: 2px;
+    border-radius: 1px; 
+}
+.min{
+   height: 150px;
+    width: 4px;
+    border-radius: 5px;
+}
+.arrow{
+    
+  align-self: center;
+}
+.point{
+    width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    background-color:dodgerblue;
+    align-self: center;
+}
+.digital{
+    margin: 40px;
+}
+.strong{
+    font-size: 30px;
+}
+.v{
+    font-size: 20px;
+}
+.arrowsec{
+   height: 50%; 
+    background-color:black; 
+    border-radius: 20px;
+}
+.arrowmin{
+    border-radius: 5px;
+}
+.hour{
+    height: 100px;
+    width: 8px;
+}
+.arrowhour{
+    border-radius: 5px;
+    border: 1px solid white; 
+}
+.cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
+    height: 250px;
+    border: 2px solid black;
+    margin:20px;
+    margin-left: 50px;
+}
+.button{
+    align-self: center; 
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: orange;
+}
+#calendar{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+}
+.titlecal{
+    align-self: center;
+    padding: 5px;
+    margin: 5px;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+}
+.yearcal{
+    align-self: center;
+    padding: 5px;
+    margin: 5px;  
+}
