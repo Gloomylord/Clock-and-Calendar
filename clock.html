@@ -1,166 +1,130 @@
 <!DOCTYPE html>
 <html>
-        <head>
-            <title>some</title>
-            <link href="1.css" rel="stylesheet" type="text/css"/>
-              <style>
-    table {
-      border-collapse: collapse;
-    }
+<head>
+    <title>some</title>
+    <link href="1.css" rel="stylesheet" type="text/css"/>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
 
-    td,
-    th {
-      border: 1px solid black;
-      padding: 3px;
-      text-align: center;
-    }
+        td,
+        th {
+            border: 1px solid black;
+            padding: 3px;
+            text-align: center;
+        }
 
-    th {
-      font-weight: bold;
-      background-color: #E6E6E6;
-    }
-  </style>
-        </head>
-    
+        th {
+            font-weight: bold;
+            background-color: #E6E6E6;
+        }
+    </style>
+</head>
+
 <body>
-    <div class="main">
+<div class="main">
     <div>
         <div class="circle">
-            <div class="center g1">
-                <div class="c1 b transform2 m"></div>
-                <div class="l b"></div>
-                <div class="c2 b transform1 m"></div>
-            </div>
-            <div class="center">
-                <div class="c1 b c"></div>
-                <div class="c2 b c"></div>
-            </div>
-            <div class="center g1">
-                <div class="c1 b transform1 m rp"></div>
-                <div class="r b"></div>
-                <div class="c2 b transform2 m rp"></div>
-            </div>
-        </div>
-        <div id="digital clock" class="digital">
-            <a class="strong">00:00</a><a>:00</a>
+            <div id="sec" class="arrow sec"></div>
+            <div id="min" class="arrow min"></div>
+            <div id="hour" class="arrow hour"></div>
+            <div class="point"></div>
         </div>
     </div>
     <div class="cont">
-      <div id ="lb" class="button">&lt;</div>  
-      <div id="calendar"></div>
-      <div id="rb" class="button">&gt;</div>
+        <div id="lb" class="button">&lt;</div>
+        <div id="calendar"></div>
+        <div id="rb" class="button">&gt;</div>
     </div>
-    </div>
-    <div class="container">
-        <div id="sec" class="arrow sec">
-            <div class="arrowsec"></div>
-            <div style="height: 50%;"></div>
-        </div>
-    </div>
-    <div class="container">
-        <div id="min" class="arrow min">
-            <div class="arrowmin" style="height: 50%; background-color:black;"></div>
-            <div style="height: 50%;"></div>
-        </div>
-    </div>
-    <div class="container">
-        <div id="hour" class="arrow hour">
-            <div class="arrowhour" style="height: 50%; background-color:black;"></div>
-            <div style="height: 50%;"></div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="point"></div>
-    </div>
+</div>
 
-    <script>
-        
-   class Clock {
-    render() {
-      let date = new Date();
-  
-      let hours = date.getHours();
-      if (hours < 10) hours = '0' + hours;
-  
-      let mins = date.getMinutes();
-      if (mins < 10) mins = '0' + mins;
-  
-      let secs = date.getSeconds();
-      if (secs < 10) secs = '0' + secs;
-      document.getElementById("digital clock").innerHTML=`<a class="strong">${hours}:${mins}</a>:<a class="v">${secs};</a>`;
-      document.getElementById("sec").style.transform=`rotate(${secs*6}deg)`; 
-      document.getElementById("min").style.transform=`rotate(${mins*6}deg)`;
-    if(hours<=12){
-      document.getElementById("hour").style.transform=`rotate(${hours*30}deg)`;
-    }
-    else{
-      document.getElementById("hour").style.transform=`rotate(${(hours-12)*30}deg)`;  
-    }
+<script>
+
+    class Clock {
+        render() {
+            let date = new Date();
+
+            let hours = date.getHours();
+            if (hours < 10) hours = '0' + hours;
+
+            let mins = date.getMinutes();
+            if (mins < 10) mins = '0' + mins;
+
+            let secs = date.getSeconds();
+            if (secs < 10) secs = '0' + secs;
+                                                                     
+            document.getElementById("sec").style.transform = `rotate(${secs * 6 - 180}deg)`;
+            document.getElementById("min").style.transform = `rotate(${mins * 6 - 180}deg)`;
+            if (hours <= 12) {
+                document.getElementById("hour").style.transform = `rotate(${hours * 30 }deg)`;
+            } else {
+                document.getElementById("hour").style.transform = `rotate(${(hours - 12) * 30 - 180}deg)`;
+            }
+        }
+
+        start() {
+            this.render();
+            this.timer = setInterval(() => this.render(), 1000);
+        }
     }
 
-    start() {
-      this.render();
-      this.timer = setInterval(() => this.render(), 1000);
-    }
-  }
-  
-  
-  let clock = new Clock();
-  clock.start();
-        
-    function del(){
-        let yeartitle = document.getElementsByClassName('yearcal');
-        let monthtitle = document.getElementsByClassName('titlecal');
+
+    let clock = new Clock();
+    clock.start();
+
+    function del() {
+        let yearTitle = document.getElementsByClassName('yearcal');
+        let monthTitle = document.getElementsByClassName('titlecal');
         let table1 = document.getElementsByTagName('table');
         table1[0].remove();
-        monthtitle[0].remove();
-        yeartitle[0].remove();
+        monthTitle[0].remove();
+        yearTitle[0].remove();
     }
-  
-    let obj ={
-        year:2019,
-        month:11,
+    let date = new Date();
+    let obj = {
+        year: date.getFullYear() ,
+        month: date.getMonth() ,
         elem: calendar
-    }  
+    };
+
     function createCalendar(elem, year, month) {
-      let date = new Date(year, month);
-      let date1 = new Date(year,month+1,0);  
-      let m 
-      if(date.getDay() == 0){
-        m = 6;
-      }
-      else{
-        m = date.getDay() - 1;
-      }
-      let monthName = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
-      let k = ['пн','вт','ср','чт','пт','сб','вс'];
-      let s = document.createElement('table');
-        
+        let date = new Date(year, month);
+        let date1 = new Date(year, month + 1, 0);
+        let m;
+        if (date.getDay() === 0) {
+            m = 6;
+        } else {
+            m = date.getDay() - 1;
+        }
+        let monthName = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+        let k = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+        let s = document.createElement('table');
+
         let monthadd = document.createElement('div');
         monthadd.className = 'titlecal';
         monthadd.innerHTML = monthName[date.getMonth()];
         elem.append(monthadd);
         elem.append(s);
-        let d = document.createElement('tr')   
+        let d = document.createElement('tr');
         s.append(d);
-        for(let i=0; i<7;i++){
+        for (let i = 0; i < 7; i++) {
             let st = document.createElement('th');
-            st.innerHTML = k[i]; 
-            d.append(st); 
-        } 
+            st.innerHTML = k[i];
+            d.append(st);
+        }
         let l = 1;
-        let p = 0;
         let j = date1.getDate();
-        while(l-m < j ){
+        while (l - m < j) {
             let f = document.createElement('tr');
             s.append(f);
-            for(let i=0; i<7;i++){
+            for (let i = 0; i < 7; i++) {
                 let st = document.createElement('td');
-                if(l - m> 0 && l-m <= j){
-                st.innerHTML = l-m;
+                if (l - m > 0 && l - m <= j) {
+                    st.innerHTML = l - m;
                 }
                 l++;
-                f.append(st); 
+                f.append(st);
             }
 
         }
@@ -169,23 +133,24 @@
         yearadd.innerHTML = date.getFullYear();
         elem.append(yearadd);
     }
-    function next(){
+
+    function next() {
         del();
         obj.month += 1;
-        createCalendar(obj.elem, obj.year,obj.month);   
+        createCalendar(obj.elem, obj.year, obj.month);
     }
-    function previous(){
-        del(); 
-        obj.month -=1;
-        createCalendar(obj.elem, obj.year,obj.month);   
+
+    function previous() {
+        del();
+        obj.month -= 1;
+        createCalendar(obj.elem, obj.year, obj.month);
     }
-      
-  createCalendar(obj.elem, obj.year, obj.month);
-  document.getElementById('rb').onclick = next;
-  document.getElementById('lb').onclick = previous;
-    </script>
-        
-        
+
+    createCalendar(obj.elem, obj.year, obj.month);
+    document.getElementById('rb').onclick = next;
+    document.getElementById('lb').onclick = previous;
+</script>
+
 
 </body>
 

@@ -1,147 +1,207 @@
-.circle{
-    border: 1px solid black;
-    border-radius: 1000000px;
-    background-color: darkturquoise;
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background: #091921;
+    min-height: 100vh;
+}
+
+.circle {
+    margin-top: 40px;
+    position: relative;
+
+    background: url(clock.png);
+    background-size: cover;
     display: flex;
     justify-content: space-between;
-    height: 400px;
-    width: 400px;
-    
+    height: 350px;
+    width: 350px;
+    border: 4px solid #091921;
+    border-radius: 50%;
+    box-shadow: 0 -15px 15px rgba(255,255,255,0.05),
+    inset 0 -15px 15px rgba(255,255,255,0.05),
+    0 15px 15px rgba(0,0,0,0.3),
+    inset 0 15px 15px rgba(0,0,0,0.3);
 }
-.b{
-    background-color: black;
-}
-.r{
-  width: 20px;
-  height: 1px;
-  align-self: flex-end;
-    
-}
-.l{
-  width: 20px;
-  height: 1px;
-    align-self: flex-start;
-}
-.c1{
-    height: 20px;
-    width: 1px;
-}
-.c2{
-    height: 20px;
-    width: 1px; 
-}
-.c{
-    align-self: center;
-}
-.center{
+
+
+.center {
     display: flex;
     flex-direction: column;
-    justify-content:space-between; 
+    justify-content: space-between;
 }
-.transform1{
-    transform: rotate(45deg) ;
+
+.transform1 {
+    transform: rotate(45deg);
 }
-.transform2{
-    transform: rotate(-45deg) ;
+
+.transform2 {
+    transform: rotate(-45deg);
 }
-.container{
+
+.arrow {
+    background: #fff;
     position: absolute;
-    left: 8px;
-    top: 8px;
-    display: flex;
-    justify-content: space-around;
-    height: 400px;
-    width: 400px;
+    border-radius: 5px;
 }
-.g1{
-  flex-grow: 1;  
-}
-.m{
-    margin: 60px;
-}
-.rp{
-    align-self: flex-end
-}
-.sec{
-    height: 200px;
+
+.sec {
+    height: 130px;
     width: 2px;
-    border-radius: 1px; 
+    border-radius: 4px;
+    transform-origin:  1px 30px;
+    top: calc(50% - 30px);
+    left: calc(50% - 1px);
+    background: #6998ff;
+    z-index: 10;
 }
-.min{
-   height: 150px;
+
+.min {
+    height: 80px;
     width: 4px;
     border-radius: 5px;
+    transform-origin: 2px 2px;
+    top: calc(50% - 2px);
+    left: calc(50% - 2px);
+    z-index: 5;
 }
-.arrow{
-    
-  align-self: center;
-}
-.point{
-    width: 15px;
-    height: 15px;
-    border-radius: 20px;
-    background-color:dodgerblue;
-    align-self: center;
-}
-.digital{
-    margin: 40px;
-}
-.strong{
-    font-size: 30px;
-}
-.v{
-    font-size: 20px;
-}
-.arrowsec{
-   height: 50%; 
-    background-color:black; 
-    border-radius: 20px;
-}
-.arrowmin{
-    border-radius: 5px;
-}
-.hour{
-    height: 100px;
+
+.hour {
+    height: 60px;
     width: 8px;
+    transform-origin: 4px 4px;
+    top: calc(50% - 4px);
+    left: calc(50% - 4px);
+    transform: rotate(80deg);
+    background: #ff105e;
 }
-.arrowhour{
+
+
+
+.point {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 20px;
+    background-color: #fff;
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
+    z-index: 100;
+}
+
+.digital {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    color: #E6E6E6;
+}
+
+.digital :first-child {
+    font-size: 35px;
+}
+
+.digital :nth-child(2) {
+    font-size: 25px;
+}
+
+
+.arrowhour {
     border-radius: 5px;
-    border: 1px solid white; 
+    border: 1px solid white;
 }
-.cont{
+
+.cont {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 300px;
-    height: 250px;
-    border: 2px solid black;
-    margin:20px;
+    width: auto;
+    height: auto;
+    margin: 20px;
     margin-left: 50px;
+    padding: 20px;
+    color: #c8c8c8;
+    border: 4px solid #091921;
+    box-shadow: 0 -15px 15px rgba(255,255,255,0.05),
+    inset 0 -15px 15px rgba(255,255,255,0.05),
+    0 15px 15px rgba(0,0,0,0.3),
+    inset 0 15px 15px rgba(0,0,0,0.3);
 }
-.button{
-    align-self: center; 
+
+
+
+.button {
+    align-self: center;
     margin: 10px;
-    border: 2px solid black;
+    padding: 5px 20px;
     border-radius: 4px;
-    padding: 5px;
-    background-color: orange;
+    font-size: 20px;
+    font-weight:600;
+    background: #091921 !important;
+    border: 1px solid #091921 !important;
+    box-shadow: 0 -5px 5px rgba(255,255,255,0.05),
+    inset 0 -5px 15px rgba(255,255,255,0.05),
+    0 5px 5px rgba(0,0,0,0.3),
+    inset 0 5px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: .2s;
 }
-#calendar{
+
+.button:hover{
+    box-shadow: 0 -5px 5px rgba(255,255,255,0.05),
+    0 5px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+#calendar {
     display: flex;
     flex-direction: column;
-    height: 100px;
+    transition: .2s;
 }
-.titlecal{
+
+.titlecal {
     align-self: center;
     padding: 5px;
-    margin: 5px;
+    margin: 10px;
+    font-size: 30px;
 }
-.main{
-    display: flex;
-    flex-direction: row;
-}
-.yearcal{
+
+.yearcal {
     align-self: center;
     padding: 5px;
-    margin: 5px;  
+    margin: 10px;
+    font-size: 30px;
 }
+
+th {
+    font-size: 25px;
+    background: #091921 !important;
+    padding: 5px !important;
+    border: 4px solid #091921 !important;
+    box-shadow: 0 -5px 5px rgba(255,255,255,0.05),
+    inset 0 -5px 15px rgba(255,255,255,0.05),
+    0 5px 5px rgba(0,0,0,0.3),
+    inset 0 5px 5px rgba(0,0,0,0.3) !important;
+}
+
+
+td {
+    font-size: 25px;
+    background: #091921 !important;
+    padding: 5px !important;
+    border: 4px solid #091921 !important;
+    box-shadow: 0 -5px 5px rgba(255,255,255,0.05),
+    inset 0 -5px 15px rgba(255,255,255,0.05),
+    0 5px 5px rgba(0,0,0,0.3),
+    inset 0 5px 5px rgba(0,0,0,0.3) !important;
+}
+
